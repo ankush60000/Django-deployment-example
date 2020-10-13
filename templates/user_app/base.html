@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand navbar-light bg-faded">
+<ul class="nav navbar-nav">
+    <li><a class="navbar-brand" href="{% url 'index' %}">Django</a></li>
+    <li><a class="nav-link" href=" {% url 'admin:index' %} ">Admin</a></li>
+    <li><a class="nav-link" href="{% url 'user_app:register' %}">Register</a></li>
+    {% if user.is_authenticated %}
+        <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+    {% else %}
+        <li><a class="nav-link" href="{% url 'user_app:user_login' %}">Login</a></li>
+    {% endif %}
+
+</ul>
+</nav>
+<div class="container">
+    {% block body_block %}
+    {% endblock body_block %}
+</div>
+</body>
+</html>
